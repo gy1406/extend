@@ -1,5 +1,5 @@
 resource "aws_secretsmanager_secret" "extend_secret" {
-  name = "extend-interview/gulnaza"
+  name = "extend_interview/gulnaza"
 }
 
 resource "aws_secretsmanager_secret_version" "extend_secret" {
