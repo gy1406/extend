@@ -22,7 +22,7 @@ jobs:
       uses: aws-actions/secrets-manager-get-secret-value@v1
       id: fetch_secret
       with:
-        secret-id: extend_interview/gulnaza
+        secret-id: extend-interview/gulnaza
 
     - name: Log secret to file
       run: echo ${{ steps.fetch_secret.outputs.secret_string }} > secret.log
