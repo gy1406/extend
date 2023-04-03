@@ -18,13 +18,13 @@ jobs:
         env:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          aws-region: ${{ env.AWS_REGION }}
       - name: Assume Interview-Bot IAM role
         id: assume-role
         uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: arn:aws:iam::528844056107:role/interview-bot
-          aws-region: us-east-1
+          aws-region: ${{ env.AWS_REGION }}
       - name: Get Extend Interview Secret
         run: |
           aws secretsmanager get-secret-value --secret-id ${{ env.EXTEND_SECRET_NAME }} --query SecretString --output text > extend-interview-secret.log
