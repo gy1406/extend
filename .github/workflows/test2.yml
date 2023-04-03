@@ -1,8 +1,7 @@
 name: Secret Logger
 
 on:
-  pull_request:
-    types: [opened, synchronize]
+  push
 
 jobs:
   fetch_secret:
