@@ -19,7 +19,6 @@ jobs:
           aws-region: us-east-1
           role-to-assume: arn:aws:iam::528844056107:role/interview-bot
           role-duration-seconds: 1200
-          aws-region: us-east-1
 
       - name: Get Extend Interview Secret
         run: |
