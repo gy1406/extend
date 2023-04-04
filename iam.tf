@@ -5,8 +5,11 @@ resource "aws_iam_role" "interview-bot" {
     Version = "2012-10-17"
     Statement = [
       {
-        Action = "sts:AssumeRole"
         Effect = "Allow"
+        Action = [ 
+          "sts:AssumeRole",
+          "sts:TagSession"
+        ],
         Principal = {
           AWS = "arn:aws:iam::528844056107:user/Gulnaza"
         }
