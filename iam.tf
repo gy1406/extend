@@ -41,12 +41,12 @@ resource "aws_iam_policy" "extend_policy" {
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
-      { Effect = "Allow"
+      { 
+        Effect = "Allow"
         Action = [
-          "SecretsManagerReadOnlyAccess",
+          "secretsmanager:SecretsManagerReadOnlyAccess",
           "secretsmanager:GetSecretValue"
         ]
-        Effect   = "Allow"
         Resource = "arn:aws:secretsmanager:us-east-1:528844056107:secret:extend-interview/gulnaza"
 
       }
@@ -54,10 +54,9 @@ resource "aws_iam_policy" "extend_policy" {
   })
 }
 
-resource "aws_iam_policy_attachment" "extend-attach-policy" {
-    name = "extend-attach-policy"
-    roles = [aws_iam_role.interview-bot.name]
-    policy_arn = aws_iam_policy.extend_policy.arn
+resource "aws_iam_role_policy_attachment" "extend-policy-attachment" {
+  role       = aws_iam_role.interview-bot.name
+  policy_arn = aws_iam_policy.extend_policy.arn
 }
 
 
