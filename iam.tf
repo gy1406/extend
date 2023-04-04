@@ -48,9 +48,6 @@ resource "aws_iam_policy" "extend_policy" {
           "secretsmanager:GetSecretValue"
         ]
         Resource = "arn:aws:secretsmanager:us-east-1:528844056107:secret:extend-interview/gulnaza"
-        Principal = {
-          AWS = "arn:aws:iam::528844056107:root"
-
       }
     ]
   })
