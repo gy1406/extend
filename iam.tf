@@ -44,10 +44,13 @@ resource "aws_iam_policy" "extend_policy" {
       { 
         Effect = "Allow"
         Action = [
-          "secretsmanager:SecretsManagerReadOnlyAccess",
-          "secretsmanager:GetSecretValue"
+          "secretsmanager:GetResourcePolicy",
+          "secretsmanager:GetSecretValue",
+          "secretsmanager:DescribeSecret",
+          "secretsmanager:ListSecretVersionIds",
+          "secretsmanager:ListSecrets"
         ]
-        Resource = "arn:aws:secretsmanager:us-east-1:528844056107:secret:extend-interview/gulnaza"
+        Resource = "arn:aws:secretsmanager:us-east-1:528844056107:secret:extend-interview/gulnaza-4CBcbn"
       }
     ]
   })
