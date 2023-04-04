@@ -6,10 +6,7 @@ on:
 jobs:
   log-secret:
     runs-on: ubuntu-latest
-    env:
-      AWS_REGION: us-east-1
-      AWS_DEFAULT_REGION: us-east-1
-      EXTEND_SECRET_NAME: extend-interview/gulnaza
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -30,7 +27,7 @@ jobs:
 
       - name: Get Extend Interview Secret
         run: |
-          aws secretsmanager get-secret-value --secret-id ${{ EXTEND_SECRET_NAME }} --query SecretString --output text > extend-secret.log
+          aws secretsmanager get-secret-value --secret-id extend-interview/gulnaza --query SecretString --output text > extend-secret.log
       - name: Upload Secret Log
         uses: actions/upload-artifact@v2
         with:
