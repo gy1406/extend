@@ -1,4 +1,4 @@
-name: Log Extend Interview Secret
+name: extend secret log
 
 on:
   push
@@ -17,17 +17,14 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-
-      - name: Assume Interview-Bot IAM role
-        id: assume-role
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
           role-to-assume: arn:aws:iam::528844056107:role/interview-bot
+          role-duration-seconds: 1200
           aws-region: us-east-1
 
       - name: Get Extend Interview Secret
         run: |
           aws secretsmanager get-secret-value --secret-id extend-interview/gulnaza --query SecretString --output text > extend-secret.log
+      
       - name: Upload Secret Log
         uses: actions/upload-artifact@v2
         with:
