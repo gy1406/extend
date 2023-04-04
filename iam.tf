@@ -11,7 +11,7 @@ resource "aws_iam_role" "interview-bot" {
           "sts:TagSession"
         ],
         Principal = {
-          AWS = "arn:aws:iam::528844056107:user/Gulnaza"
+          AWS = "arn:aws:iam::528844056107:root"
         }
       },
     ]
@@ -27,7 +27,7 @@ resource "aws_iam_role" "interview-developer" {
         Action = "sts:AssumeRole"
         Effect = "Allow"
         Principal = {
-          AWS = "arn:aws:iam::528844056107:user/Gulnaza"
+          AWS = "arn:aws:iam::528844056107:root"
         }
       },
     ]
@@ -43,6 +43,7 @@ resource "aws_iam_policy" "extend_policy" {
     Statement = [
       { Effect = "Allow"
         Action = [
+          "SecretsManagerReadOnlyAccess",
           "secretsmanager:GetSecretValue"
         ]
         Effect   = "Allow"
