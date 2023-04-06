@@ -7,9 +7,8 @@ resource "aws_iam_role" "interview-bot" {
       {
         Effect = "Allow"
         Action = [ 
-          "sts:AssumeRole",
-          "sts:TagSession"
-        ],
+          "sts:AssumeRole"
+        ]
         Principal = {
           AWS = "arn:aws:iam::528844056107:root"
         }
